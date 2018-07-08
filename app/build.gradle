@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "../dependencies.gradle"
+apply plugin: 'kotlin-kapt'
+apply plugin: "kotlin-allopen"
+
+android {
+    compileSdkVersion versions.androidCompileSdk
+    defaultConfig {
+        //TODO change this application ID
+        applicationId "com.example.king.mytemplate"
+        minSdkVersion versions.androidMinSdk
+        targetSdkVersion versions.androidTargetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    allOpen {
+        annotation("com.example.king.mytemplate.util.Allopen")
+        // annotations("com.another.Annotation", "com.third.Annotation")
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguardTest-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguardTest-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation libraries.androidSupport
+    implementation libraries.androidAnnotations
+    implementation libraries.androidDesign
+    implementation libraries.appCompatV7
+    implementation libraries.androidRecyclerView
+    implementation libraries.androidMultidex
+    implementation libraries.androidConstraintLayout
+
+    //Rx
+    implementation libraries.rxJava2
+    implementation libraries.rxAndroid
+    //okhttp
+    implementation libraries.okHttp
+    implementation libraries.retrofit2
+    implementation libraries.retrofit2Gson
+    implementation libraries.retrofit2RxJava
+    //dagger2
+    implementation libraries.dagger2
+    implementation libraries.dagger2Android
+    implementation libraries.dagger2Support
+    kapt libraries.dagger2Complier
+    kapt libraries.dagger2AndroidComplier
+    //arch
+    implementation libraries.androidLifeCycle
+    implementation libraries.androidRoom
+    kapt libraries.androidRoomComplier
+
+
+    // Dependencies for Android unit tests
+    androidTestImplementation "junit:junit:$rootProject.ext.junitVersion"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    androidTestImplementation "com.google.dexmaker:dexmaker:$rootProject.ext.dexmakerVersion"
+    androidTestImplementation "com.google.dexmaker:dexmaker-mockito:$rootProject.ext.dexmakerVersion"
+
+    // Espresso UI Testing
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso.idling:idling-concurrent:$rootProject.espressoVersion"
+    implementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
+
+    // Resolve conflicts between main and test APK:
+    androidTestImplementation libraries.androidSupport
+    androidTestImplementation libraries.androidAnnotations
+    androidTestImplementation libraries.androidDesign
+    androidTestImplementation libraries.appCompatV7
+    androidTestImplementation libraries.androidRecyclerView
+}
+
+//Put google service plugin at the Bottom
+
