@@ -1,6 +1,14 @@
 package com.example.king.mytemplate.di;
 
+import android.app.Application;
+import android.content.Context;
+import com.example.king.mytemplate.data.ItemDataSource;
+import com.example.king.mytemplate.data.Local;
+import com.example.king.mytemplate.data.Remote;
+import com.example.king.mytemplate.domain.repository.ItemRepository;
+import com.example.king.mytemplate.domain.repository.ItemRepositoryImpl;
 import com.example.king.mytemplate.util.UserUtil;
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -15,10 +23,10 @@ import javax.inject.Singleton;
  * AppComponent}.
  */
 @Module
-public class ApplicationModule {
+abstract public class ApplicationModule {
     //expose Application as an injectable context
-    //@Binds
-    //abstract Context bindContext(Application application);
+    @Binds
+    abstract Context bindContext(Application application);
 
     @Singleton
     @Provides
@@ -26,6 +34,12 @@ public class ApplicationModule {
         return new UserUtil();
     }
 
+    @Singleton
+    @Provides
+    static ItemRepository provideItemRepsitory(@Local ItemDataSource local,
+            @Remote ItemDataSource remote) {
+        return new ItemRepositoryImpl(local, remote);
+    }
 }
 
 

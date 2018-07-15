@@ -14,9 +14,14 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun mainFragment(): DetailFragment
 
-    @Provides
-    @ActivityScoped
-    fun provideString(): String {
-        return "this is the injected string"
+    @Module
+    companion object {
+        @Provides
+        @ActivityScoped
+        @JvmStatic
+        fun provideString(): String {
+            return "this is the injected string"
+        }
     }
+
 }

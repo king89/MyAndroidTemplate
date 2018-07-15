@@ -2,6 +2,7 @@ package com.example.king.mytemplate.di;
 
 import com.example.king.mytemplate.ui.main.MainActivity;
 import com.example.king.mytemplate.ui.main.DetailModule;
+import com.example.king.mytemplate.ui.main.MainModule;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -16,7 +17,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBindingModule {
     @ActivityScoped
-    @ContributesAndroidInjector(modules = DetailModule.class)
+    @ContributesAndroidInjector(modules = MainModule.class)
     abstract MainActivity mainActivity();
 
     //Add Activity Module to the map
