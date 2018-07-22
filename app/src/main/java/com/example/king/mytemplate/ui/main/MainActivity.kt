@@ -5,12 +5,10 @@ import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.king.mytemplate.R
 import com.example.king.mytemplate.R.id
-import com.example.king.mytemplate.R.layout
 import com.example.king.mytemplate.R.string
 import com.example.king.mytemplate.base.BaseActivity
 import com.example.king.mytemplate.domain.repository.ItemRepository
@@ -23,11 +21,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     @Inject
     lateinit var itemRepository: ItemRepository
 
+    @Inject
+    lateinit var mainFragment: MainFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_main)
+        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        Log.d("-=-=", itemRepository.toString())
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
@@ -39,8 +39,19 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
+        initFragment()
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun initFragment() {
+        val fragment: MainFragment? = supportFragmentManager.findFragmentById(
+                R.id.contentMain) as? MainFragment
+        if (fragment == null) {
+            // Get the fragment from dagger
+            supportFragmentManager.beginTransaction()
+                    .add(R.id.contentMain, mainFragment)
+                    .commit()
+        }
     }
 
     override fun onBackPressed() {

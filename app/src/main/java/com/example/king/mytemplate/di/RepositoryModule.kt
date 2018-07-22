@@ -16,6 +16,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import java.util.concurrent.TimeUnit.SECONDS
 import javax.inject.Singleton
 
 /*
@@ -41,7 +42,7 @@ abstract class RepositoryModule {
         @Singleton
         @Provides
         @JvmStatic
-        open fun provideDb(context: Application): ItemDataBase {
+        fun provideDb(context: Application): ItemDataBase {
             return Room.databaseBuilder(
                     context.applicationContext,
                     ItemDataBase::class.java,
@@ -51,24 +52,27 @@ abstract class RepositoryModule {
         @Singleton
         @Provides
         @JvmStatic
-        open fun provideItemDao(db: ItemDataBase): ItemDAO {
+        fun provideItemDao(db: ItemDataBase): ItemDAO {
             return db.itemsDao()
         }
-
 
         @Singleton
         @Provides
         @BaseUrl
         @JvmStatic
-        open fun providerBaseUrl(): String {
-            return "http://127.0.0.1/"
+        fun providerBaseUrl(): String {
+            return "http://jsonplaceholder.typicode.com/"
         }
 
         @Singleton
         @Provides
         @JvmStatic
-        open fun providerOkHttpClient(): OkHttpClient {
+        fun providerOkHttpClient(): OkHttpClient {
+            val timeout = 5L
             return OkHttpClient().newBuilder()
+                    .connectTimeout(timeout, SECONDS)
+                    .readTimeout(timeout, SECONDS)
+                    .writeTimeout(timeout, SECONDS)
                     .build()
         }
     }

@@ -3,14 +3,26 @@
   <!-- Base application theme. -->
   <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorPrimary">@color/primaryColor</item>
+    <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+    <item name="colorAccent">@color/secondaryColor</item>
+
+    <!-- New MaterialComponents attributes. -->
+    <!--<item name="colorPrimaryLight">@color/primaryColor</item>-->
+    <!--<item name="colorSecondary">@color/secondaryColor</item>-->
+    <!--<item name="colorSecondaryLight">@color/secondaryLightColor</item>-->
+    <!--<item name="colorSecondaryDark">?@color/primaryDarkColor</item>-->
+    <!--<item name="scrimBackground">@color/mtrl_scrim_color</item>-->
+    <!--<item name="snackbarButtonStyle">?attr/borderlessButtonStyle</item>-->
   </style>
 
-  <style name="AppTheme.NoActionBar">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
+  <style name= "AppTheme.Title" parent="TextAppearance.AppCompat.Title">
+    <item name="android:maxLines">1</item>
+    <item name="android:ellipsize">end</item>
+  </style>
+
+  <style name= "AppTheme.Subtitle" parent="TextAppearance.AppCompat.Body1">
+
   </style>
 
   <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

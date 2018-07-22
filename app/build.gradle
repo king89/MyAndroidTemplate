@@ -50,7 +50,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation libraries.androidSupport
     implementation libraries.androidAnnotations
     implementation libraries.androidDesign
@@ -78,7 +78,8 @@ dependencies {
     implementation libraries.androidRoom
     implementation libraries.androidRoomRxJava
     kapt libraries.androidRoomComplier
-
+    //material, can not be used now
+//    implementation libraries.androidMaterial
 
     // Dependencies for Android unit tests
     androidTestImplementation "junit:junit:$rootProject.ext.junitVersion"

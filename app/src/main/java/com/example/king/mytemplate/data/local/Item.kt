@@ -11,11 +11,6 @@ import java.util.UUID
 
 @Entity(tableName = "items")
 class Item(
-        @PrimaryKey
-        @NonNull
-        @ColumnInfo(name = "entryid")
-        var mId: String,
-
         @Nullable
         @ColumnInfo(name = "title")
         var mTitle: String,
@@ -23,6 +18,11 @@ class Item(
         @Nullable
         @ColumnInfo(name = "description")
         var mDescription: String,
+
+        @PrimaryKey
+        @NonNull
+        @ColumnInfo(name = "entryid")
+        var mId: String,
 
         @ColumnInfo(name = "completed")
         var mCompleted: Boolean

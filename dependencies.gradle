@@ -20,7 +20,8 @@ ext.versions = [rxJava2                : "2.1.0",
                 jodaTime               : "2.9.3",
                 gson                   : "2.3.1",
                 glide                  : "3.7.0",
-                dagger2                : "2.16",]
+                dagger2                : "2.16",
+                material               : "1.0.0-beta01"]
 
 ext.libraries = [appCompatV7            : "com.android.support:appcompat-v7:$versions.androidAppCompat",
                  androidAnnotations     : "com.android.support:support-annotations:$versions.androidAppCompat",
@@ -63,10 +64,12 @@ ext.libraries = [appCompatV7            : "com.android.support:appcompat-v7:$ver
                  dagger2Support         : "com.google.dagger:dagger-android-support:$versions.dagger2",
                  dagger2Complier        : "com.google.dagger:dagger-compiler:$versions.dagger2",
                  dagger2AndroidComplier : "com.google.dagger:dagger-android-processor:$versions.dagger2",
-                 androidLifeCycle       : "android.arch.lifecycle:viewmodel:$versions.androidArch",
+                 androidLifeCycle       : "android.arch.lifecycle:extensions:$versions.androidArch",
                  androidRoom            : "android.arch.persistence.room:runtime:$versions.androidArch",
                  androidRoomComplier    : "android.arch.persistence.room:compiler:$versions.androidArch",
-                 androidRoomRxJava      : "android.arch.persistence.room:rxjava2:$versions.androidArch"]
+                 androidRoomRxJava      : "android.arch.persistence.room:rxjava2:$versions.androidArch",
+
+                 androidMaterial        : "com.google.android.material:material:$versions.material"]
 
 //ext.appendVersionNameVersionCode = { variant, defaultConfig ->
 //    variant.outputs.each { output ->
