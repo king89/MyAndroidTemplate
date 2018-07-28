@@ -77,9 +77,12 @@ dependencies {
     implementation libraries.androidLifeCycle
     implementation libraries.androidRoom
     implementation libraries.androidRoomRxJava
+    implementation libraries.androidNavigationFragment
+    implementation libraries.androidNavigationUi
+
     kapt libraries.androidRoomComplier
     //material, can not be used now
-//    implementation libraries.androidMaterial
+    //    implementation libraries.androidMaterial
 
     // Dependencies for Android unit tests
     androidTestImplementation "junit:junit:$rootProject.ext.junitVersion"
