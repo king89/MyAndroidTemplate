@@ -1,4 +1,4 @@
-package com.example.king.mytemplate.ui.main
+package com.example.king.mytemplate.ui.main.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,44 +9,59 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.king.mytemplate.R
 import com.example.king.mytemplate.base.BaseFragment
-import com.example.king.mytemplate.di.ActivityScoped
-import com.example.king.mytemplate.di.ViewModelFactory
+import com.example.king.mytemplate.base.ViewModelFactory
+import com.example.king.mytemplate.di.annotation.ActivityScopedFactory
+import com.example.king.mytemplate.di.annotation.FragmentScopedFactory
 import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.ui.main.MainActivityViewModel
+import com.example.king.mytemplate.ui.main.fragment.MainFragment.DataAdapter.ViewHolder
 import com.example.king.mytemplate.util.Lg
 import com.example.king.mytemplate.util.withViewModel
 import kotlinx.android.synthetic.main.fragment_main.rvData
 import kotlinx.android.synthetic.main.fragment_main.swipeRefreshLayout
 import javax.inject.Inject
 
-@ActivityScoped
 class MainFragment @Inject constructor() : BaseFragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    @field:ActivityScopedFactory
+    lateinit var activityViewModelFactory: ViewModelFactory
+
+    @Inject
+    @field:FragmentScopedFactory
+    lateinit var fragmentViewModelFactory: ViewModelFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?): View? {
-        Lg.d("-=-=, onCreateView")
+        Lg.d("$TAG, onCreateView")
 
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Lg.d("-=-=, onViewCreated")
-
+        Lg.d("$TAG, onViewCreated")
         super.onViewCreated(view, savedInstanceState)
+        initViewModel()
         initDataList()
 
     }
 
+    private fun initViewModel() {
+        withViewModel<MainFragmentViewModel>(fragmentViewModelFactory) {
+            Lg.d("$TAG, initViewModel MainFragmentViewModel")
+
+        }
+    }
+
     private fun initDataList() {
         rvData.layoutManager = LinearLayoutManager(this.context)
-        withViewModel<MainViewModel>(viewModelFactory) {
-            Lg.d("-=-=, initDataList")
+        withViewModel<MainActivityViewModel>(activityViewModelFactory) {
+            Lg.d("$TAG, initDataList")
 
-            rvData.adapter = DataAdapter(emptyList())
+            rvData.adapter = DataAdapter(
+                    emptyList())
             this.dataList.observe({ this@MainFragment.lifecycle }, {
-                Lg.d("-=-=, data updated")
+                Lg.d("$TAG, data updated")
                 it?.let {
                     (rvData.adapter as DataAdapter).updateData(it.toList())
                 }
@@ -62,11 +77,12 @@ class MainFragment @Inject constructor() : BaseFragment() {
     }
 
     class DataAdapter(private var data: List<MyItem>) :
-            RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+            RecyclerView.Adapter<ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_main_list,
                     parent, false)
-            return ViewHolder(view)
+            return ViewHolder(
+                    view)
         }
 
         override fun getItemCount(): Int {
@@ -90,5 +106,9 @@ class MainFragment @Inject constructor() : BaseFragment() {
                 itemView.findViewById(R.id.tvDescription) as TextView
             }
         }
+    }
+
+    companion object {
+        const val TAG = "MainFragment"
     }
 }

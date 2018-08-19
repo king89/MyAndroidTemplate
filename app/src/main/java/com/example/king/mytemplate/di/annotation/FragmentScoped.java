@@ -1,10 +1,9 @@
-package com.example.king.mytemplate.di;
+package com.example.king.mytemplate.di.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
 import javax.inject.Scope;
 
 @Scope

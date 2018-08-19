@@ -24,15 +24,15 @@
 
   </android.support.design.widget.AppBarLayout>
 
-  <fragment
-      android:id="@+id/contentMain"
-      android:name="androidx.navigation.fragment.NavHostFragment"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_marginTop="?attr/actionBarSize"
-      app:navGraph="@navigation/navigation"
-      app:defaultNavHost="true"
-      />
+  <!--<fragment-->
+      <!--android:id="@+id/contentMain"-->
+      <!--android:name="androidx.navigation.fragment.NavHostFragment"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="match_parent"-->
+      <!--android:layout_marginTop="?attr/actionBarSize"-->
+      <!--app:navGraph="@navigation/navigation"-->
+      <!--app:defaultNavHost="true"-->
+      <!--/>-->
 
   <android.support.design.widget.FloatingActionButton
       android:id="@+id/fab"

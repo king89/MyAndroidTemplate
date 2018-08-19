@@ -11,7 +11,11 @@ import com.example.king.mytemplate.R
 import com.example.king.mytemplate.R.id
 import com.example.king.mytemplate.R.string
 import com.example.king.mytemplate.base.BaseActivity
+import com.example.king.mytemplate.base.ViewModelFactory
+import com.example.king.mytemplate.di.annotation.ActivityScopedFactory
 import com.example.king.mytemplate.domain.repository.ItemRepository
+import com.example.king.mytemplate.ui.main.fragment.MainFragment
+import com.example.king.mytemplate.util.withViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -21,8 +25,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     @Inject
     lateinit var itemRepository: ItemRepository
 
+    /* Can not Inject here, if this fragment has its own scoped properties*/
+//    @Inject
+//    lateinit var mainFragment: MainFragment
+
     @Inject
-    lateinit var mainFragment: MainFragment
+    @field:ActivityScopedFactory
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,18 +48,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-        initFragment()
         nav_view.setNavigationItemSelectedListener(this)
+
+        initViewModel()
     }
 
-    private fun initFragment() {
-        val fragment: MainFragment? = supportFragmentManager.findFragmentById(
-                R.id.contentMain) as? MainFragment
-        if (fragment == null) {
-            // Get the fragment from dagger
-            supportFragmentManager.beginTransaction()
-                    .add(R.id.contentMain, mainFragment)
-                    .commit()
+    private fun initViewModel() {
+        withViewModel<MainActivityViewModel>(viewModelFactory) {
+            //TODO do something with activity view model
         }
     }
 

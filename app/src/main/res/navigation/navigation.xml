@@ -6,7 +6,7 @@
 
   <fragment
       android:id="@+id/mainFragment"
-      android:name="com.example.king.mytemplate.ui.main.MainFragment"
+      android:name="com.example.king.mytemplate.ui.main.fragment.MainFragment"
       android:label="MainFragment">
     <action
         android:id="@+id/action_mainFragment_to_detailFragment"

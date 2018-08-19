@@ -1,4 +1,4 @@
-package com.example.king.mytemplate.di;
+package com.example.king.mytemplate.di.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
