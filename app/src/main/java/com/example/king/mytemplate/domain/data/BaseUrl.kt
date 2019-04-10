@@ -1,4 +1,4 @@
-package com.example.king.mytemplate.data
+package com.example.king.mytemplate.domain.data
 
 import java.lang.annotation.Documented
 import javax.inject.Qualifier

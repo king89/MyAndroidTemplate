@@ -1,9 +1,9 @@
 package com.example.king.mytemplate.domain.repository
 
-import com.example.king.mytemplate.data.ItemDataSource
-import com.example.king.mytemplate.data.Local
-import com.example.king.mytemplate.data.Remote
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.data.ItemDataSource
+import com.example.king.mytemplate.domain.data.Local
+import com.example.king.mytemplate.domain.data.Remote
+import com.example.king.mytemplate.domain.model.MyItem
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject

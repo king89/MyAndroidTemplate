@@ -1,6 +1,6 @@
-package com.example.king.mytemplate.data
+package com.example.king.mytemplate.domain.data
 
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.model.MyItem
 import io.reactivex.Completable
 import io.reactivex.Single
 

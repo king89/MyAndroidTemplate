@@ -2,9 +2,9 @@ package com.example.king.mytemplate.di;
 
 import android.app.Application;
 import android.content.Context;
-import com.example.king.mytemplate.data.ItemDataSource;
-import com.example.king.mytemplate.data.Local;
-import com.example.king.mytemplate.data.Remote;
+import com.example.king.mytemplate.domain.data.ItemDataSource;
+import com.example.king.mytemplate.domain.data.Local;
+import com.example.king.mytemplate.domain.data.Remote;
 import com.example.king.mytemplate.domain.repository.ItemRepository;
 import com.example.king.mytemplate.domain.repository.ItemRepositoryImpl;
 import com.example.king.mytemplate.util.UserUtil;

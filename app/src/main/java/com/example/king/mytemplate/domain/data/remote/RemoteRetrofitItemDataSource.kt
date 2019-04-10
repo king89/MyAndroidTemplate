@@ -1,9 +1,9 @@
-package com.example.king.mytemplate.data.remote
+package com.example.king.mytemplate.domain.data.remote
 
-import com.example.king.mytemplate.data.BaseUrl
-import com.example.king.mytemplate.data.ItemDataSource
-import com.example.king.mytemplate.model.ItemMapper
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.data.BaseUrl
+import com.example.king.mytemplate.domain.data.ItemDataSource
+import com.example.king.mytemplate.domain.model.ItemMapper
+import com.example.king.mytemplate.domain.model.MyItem
 import io.reactivex.Completable
 import io.reactivex.Single
 import okhttp3.OkHttpClient

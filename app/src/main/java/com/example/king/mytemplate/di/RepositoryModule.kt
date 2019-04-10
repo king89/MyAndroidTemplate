@@ -2,16 +2,14 @@ package com.example.king.mytemplate.di
 
 import android.app.Application
 import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import com.example.king.mytemplate.data.BaseUrl
-import com.example.king.mytemplate.data.ItemDataSource
-import com.example.king.mytemplate.data.Local
-import com.example.king.mytemplate.data.Remote
-import com.example.king.mytemplate.data.local.ItemDAO
-import com.example.king.mytemplate.data.local.ItemDataBase
-import com.example.king.mytemplate.data.local.LocalItemDataSource
-import com.example.king.mytemplate.data.remote.RemoteRetrofitItemDataSource
-import com.example.king.mytemplate.model.ItemMapper
+import com.example.king.mytemplate.domain.data.BaseUrl
+import com.example.king.mytemplate.domain.data.ItemDataSource
+import com.example.king.mytemplate.domain.data.Local
+import com.example.king.mytemplate.domain.data.Remote
+import com.example.king.mytemplate.domain.data.local.ItemDAO
+import com.example.king.mytemplate.domain.data.local.ItemDataBase
+import com.example.king.mytemplate.domain.data.local.LocalItemDataSource
+import com.example.king.mytemplate.domain.data.remote.RemoteRetrofitItemDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

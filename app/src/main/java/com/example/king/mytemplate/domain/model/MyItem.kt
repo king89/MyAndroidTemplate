@@ -1,6 +1,6 @@
-package com.example.king.mytemplate.model
+package com.example.king.mytemplate.domain.model
 
-import com.example.king.mytemplate.data.local.Item
+import com.example.king.mytemplate.domain.data.local.Item
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import javax.inject.Inject

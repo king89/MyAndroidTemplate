@@ -3,7 +3,7 @@ package com.example.king.mytemplate.ui.main
 import android.arch.lifecycle.MutableLiveData
 import com.example.king.mytemplate.base.BaseActivityViewModel
 import com.example.king.mytemplate.domain.usecase.GetListUseCase
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.model.MyItem
 import com.example.king.mytemplate.util.Lg
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject

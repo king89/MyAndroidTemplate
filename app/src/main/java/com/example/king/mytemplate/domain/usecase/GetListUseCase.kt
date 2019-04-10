@@ -1,7 +1,7 @@
 package com.example.king.mytemplate.domain.usecase
 
 import com.example.king.mytemplate.domain.repository.ItemRepository
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.model.MyItem
 import io.reactivex.Single
 import java.util.concurrent.TimeUnit.SECONDS
 import javax.inject.Inject

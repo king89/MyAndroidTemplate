@@ -1,4 +1,4 @@
-package com.example.king.mytemplate.data.local
+package com.example.king.mytemplate.domain.data.local
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase

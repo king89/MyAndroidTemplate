@@ -1,8 +1,8 @@
-package com.example.king.mytemplate.data.local
+package com.example.king.mytemplate.domain.data.local
 
-import com.example.king.mytemplate.data.ItemDataSource
-import com.example.king.mytemplate.model.ItemMapper
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.data.ItemDataSource
+import com.example.king.mytemplate.domain.model.ItemMapper
+import com.example.king.mytemplate.domain.model.MyItem
 import com.example.king.mytemplate.util.Lg
 import io.reactivex.Completable
 import io.reactivex.Single

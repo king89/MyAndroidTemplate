@@ -1,4 +1,4 @@
-package com.example.king.mytemplate.data.local
+package com.example.king.mytemplate.domain.data.local
 
 import android.arch.persistence.room.Entity
 import java.util.UUID.randomUUID

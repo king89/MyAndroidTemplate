@@ -12,7 +12,7 @@ import com.example.king.mytemplate.base.BaseFragment
 import com.example.king.mytemplate.base.ViewModelFactory
 import com.example.king.mytemplate.di.annotation.ActivityScopedFactory
 import com.example.king.mytemplate.di.annotation.FragmentScopedFactory
-import com.example.king.mytemplate.model.MyItem
+import com.example.king.mytemplate.domain.model.MyItem
 import com.example.king.mytemplate.ui.main.MainActivityViewModel
 import com.example.king.mytemplate.ui.main.fragment.MainFragment.DataAdapter.ViewHolder
 import com.example.king.mytemplate.util.Lg
