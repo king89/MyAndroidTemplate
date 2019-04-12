@@ -31,7 +31,7 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'),
@@ -84,18 +84,26 @@ dependencies {
     //material, can not be used now
     //    implementation libraries.androidMaterial
 
+
+    // Dependencies for unit tests
+    testImplementation libraries.archCoreTesting
+    testImplementation libraries.mockito
+
+
     // Dependencies for Android unit tests
-    androidTestImplementation "junit:junit:$rootProject.ext.junitVersion"
-    androidTestImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
-    androidTestImplementation "com.google.dexmaker:dexmaker:$rootProject.ext.dexmakerVersion"
-    androidTestImplementation "com.google.dexmaker:dexmaker-mockito:$rootProject.ext.dexmakerVersion"
+    androidTestImplementation libraries.junit
+    androidTestImplementation libraries.mockito
+    androidTestImplementation libraries.mockitoAndroid
+    androidTestImplementation libraries.mockitoKotlin
 
     // Espresso UI Testing
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso.idling:idling-concurrent:$rootProject.espressoVersion"
-    implementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
+
+    androidTestImplementation libraries.archCoreTesting
 
     // Resolve conflicts between main and test APK:
     androidTestImplementation libraries.androidSupport

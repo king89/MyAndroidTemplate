@@ -1,10 +1,13 @@
 package com.example.king.mytemplate.ui.main
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar.LENGTH_SHORT
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import com.example.king.mytemplate.R
@@ -15,19 +18,13 @@ import com.example.king.mytemplate.base.ViewModelFactory
 import com.example.king.mytemplate.di.annotation.ActivityScopedFactory
 import com.example.king.mytemplate.domain.repository.ItemRepository
 import com.example.king.mytemplate.ui.main.fragment.MainFragment
+import com.example.king.mytemplate.util.Lg
 import com.example.king.mytemplate.util.withViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    @Inject
-    lateinit var itemRepository: ItemRepository
-
-    /* Can not Inject here, if this fragment has its own scoped properties*/
-//    @Inject
-//    lateinit var mainFragment: MainFragment
 
     @Inject
     @field:ActivityScopedFactory
@@ -39,13 +36,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+                .setAction("Action", null).show()
         }
 
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar,
-                string.navigation_drawer_open,
-                string.navigation_drawer_close)
+            this, drawer_layout, toolbar,
+            string.navigation_drawer_open,
+            string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
@@ -56,6 +53,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private fun initViewModel() {
         withViewModel<MainActivityViewModel>(viewModelFactory) {
             //TODO do something with activity view model
+            this.dataList.observe(this@MainActivity, Observer {
+                Snackbar.make(nav_view, "Test Observer: ${it?.size}", LENGTH_SHORT).show()
+            })
         }
     }
 

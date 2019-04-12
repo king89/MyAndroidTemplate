@@ -15,7 +15,7 @@ import javax.inject.Singleton;
         ActivityBindingModule.class,
         RepositoryModule.class,
         AndroidSupportInjectionModule.class})
-public interface AppComponent extends AndroidInjector<MyApplication> {
+public interface AppComponent extends AndroidInjector<MyApplication> , HasInjectorMap {
 
     UserUtil getUserUtil();
 

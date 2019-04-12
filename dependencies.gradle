@@ -13,14 +13,17 @@ ext.versions = [rxJava2                : "2.1.0",
                 retrofit2              : "2.3.0",
                 butterKnife            : "8.4.0",
                 okHttp                 : "3.8.0",
-
+                mockito                : "2.21.0",
+                mockitoKotlin          : "1.6.0",
+                robolectric            : "3.7.1",
                 multidex               : "1.0.1",
+                junit                  : "4.12",
 
                 googlePlayService      : "9.4.0",
                 jodaTime               : "2.9.3",
                 gson                   : "2.3.1",
                 glide                  : "3.7.0",
-                dagger2                : "2.16",
+                dagger2                : "2.20",
                 material               : "1.0.0-beta01",
                 navigation             : "1.0.0-alpha04"]
 
@@ -71,7 +74,14 @@ ext.libraries = [appCompatV7              : "com.android.support:appcompat-v7:$v
                  androidRoomRxJava        : "android.arch.persistence.room:rxjava2:$versions.androidArch",
                  androidNavigationFragment: "android.arch.navigation:navigation-fragment-ktx:$versions.navigation",
                  androidNavigationUi      : "android.arch.navigation:navigation-ui-ktx:$versions.navigation",
-                 androidMaterial          : "com.google.android.material:material:$versions.material"]
+                 androidMaterial          : "com.google.android.material:material:$versions.material",
+
+                 //Test
+                 junit                     : "junit:junit:$versions.junit",
+                 mockitoKotlin            : "com.nhaarman:mockito-kotlin:$versions.mockitoKotlin",
+                 mockito                  : "org.mockito:mockito-core:$versions.mockito",
+                 mockitoAndroid           : "org.mockito:mockito-android:$versions.mockito",
+                 archCoreTesting          : "android.arch.core:core-testing:$versions.androidArch",]
 
 //ext.appendVersionNameVersionCode = { variant, defaultConfig ->
 //    variant.outputs.each { output ->
